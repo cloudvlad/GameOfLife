@@ -1,16 +1,15 @@
-
-
 var timeoutId = null;
+var SPEED = 1;
 
 var matrix;
-
+var run = false;
 var table = document.getElementById("grid-table");
 var start_button = document.getElementById("start-button");
 var status = false;
 
 var maxWidth = (Math.floor((window.innerWidth - 20) / 20));
 var maxHeight = (Math.floor((window.innerHeight - 20) / 20));
-var maxHeight = (maxHeight - 5);
+var maxHeight = (maxHeight - 4);
 var colorChange = function () {
     cell_set(this);
 };
@@ -124,11 +123,24 @@ function update() {
             }
         }
     }
-    timeoutId = setTimeout(update, 1000);
+
+    if (run) {
+        timeoutId = setTimeout(update, 500 / SPEED);
+    }
+    
 }
 
 function execute() {
-    update();
+    SPEED = document.getElementById("speed-range").value;
+    run = !run;
+    console.log(run);
+    if (run) {
+        start_button.value = "| |";
+        update();
+        returnl
+    }
+    start_button.value= ">";
+    
 }
 
 start_button.addEventListener("click", function () {execute();}, false);
