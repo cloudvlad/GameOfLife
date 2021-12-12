@@ -68,12 +68,13 @@ form #speed-range
     margin-top: 10px;
 }
 
-form #scale-range
+/*form #scale-range
 {
     float: right;
     margin-right: 25%;
     margin-top: 10px;
 }
+*/
 
 #start-button
 {
