@@ -1,5 +1,6 @@
 <p align="center">
-  <img style="filter: invert(100%); width: 50%;" src="images/title_logo.png" alt="Game of Life logo">
+  <img style="width: 50%;" src="images/title_logo.png" alt="Game of Life logo">
+  <img style="width: 50%;" src="images/title_logo_i.png" alt="Game of Life logo">
 </p>
 
 ## Web application based on John Conway's Game of life
@@ -44,9 +45,7 @@ When the initial state is set the simulation begins with applying the rules in t
 
 ## :camera_flash: Screenshots
 <p align="center">
-<img alt="desc1" width="30%" src="#">
-<img alt="desc2" width="30%" src="#">
-<img alt="desc3" width="30%" src="#">
+<img alt="screenshot of the game" width="80%" src="images/screenshot.png">
 </p>
 
 <p align="center">
@@ -54,8 +53,7 @@ When the initial state is set the simulation begins with applying the rules in t
 </p>
 
 ## :old_key: Features
-* #### Initialization of initial state
-* #### Simulation
+* #### Initialization of initial state and simulation
 * #### Speed control
 * #### Pause/Play button
 
