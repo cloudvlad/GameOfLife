@@ -34,7 +34,7 @@ var setCell = function () {
     if (matrix[x][y])
     {
         matrix[x][y] = false;
-        this.style.backgroundColor = "#E7E7E7";
+        this.style.backgroundColor = "#B2B2B2";
         return;
     }
     matrix[x][y] = true;
@@ -117,7 +117,7 @@ function update() {
                 cell.style.backgroundColor = "black";
             }
             else {
-                cell.style.backgroundColor = "#E7E7E7";
+                cell.style.backgroundColor = "#B2B2B2";
             }
         }
     }
