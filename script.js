@@ -1,30 +1,18 @@
-
-
 var timeoutId = null;
-
+var SPEED = 1;
+var SCALE = 1;
+var status = false;
 var matrix;
+var run = false;
 
 var table = document.getElementById("grid-table");
 var start_button = document.getElementById("start-button");
-var status = false;
+start_button.addEventListener("click", function () {execute();}, false);
+
 
 var maxWidth = (Math.floor((window.innerWidth - 20) / 20));
 var maxHeight = (Math.floor((window.innerHeight - 20) / 20));
-var maxHeight = (maxHeight - 5);
-var colorChange = function () {
-    cell_set(this);
-};
-
-function draw() {
-    for (let i = 0; i < maxHeight; i++) {
-        var row = table.insertRow(i);
-        for (let j = 0; j < maxWidth; j++) {
-            var cell = row.insertCell(j);
-            cell.setAttribute("id", (i.toString() + "-" + j.toString()));
-            cell.addEventListener("click", this.colorChange, false);
-        }
-    }
-}
+var maxHeight = (maxHeight - 4);
 
 window.onload = function () {
     draw();
@@ -35,45 +23,54 @@ window.onload = function () {
     }
 };
 
-function cell_set(el) {
-    var x = parseInt(el.id.split("-")[0]);
-    var y = parseInt(el.id.split("-")[1]);
+
+
+
+
+
+var setCell = function () {
+    var x = parseInt(this.id.split("-")[0]);
+    var y = parseInt(this.id.split("-")[1]);
     if (matrix[x][y])
     {
         matrix[x][y] = false;
-        el.style.backgroundColor = "#E7E7E7";
+        this.style.backgroundColor = "#B2B2B2";
         return;
     }
     matrix[x][y] = true;
-    el.style.backgroundColor = "black";
+    this.style.backgroundColor = "black";
+};
+
+function draw() {
+    for (let i = 0; i < maxHeight; i++) {
+        var row = table.insertRow(i);
+        for (let j = 0; j < maxWidth; j++) {
+            var cell = row.insertCell(j);
+            cell.setAttribute("id", (i.toString() + "-" + j.toString()));
+            cell.addEventListener("click", this.setCell, false);
+        }
+    }
 }
 
-
-
-
-
-
 function deadOrAlive(x, y) {
-    // console.log(x + "-" + y);
+    // Map of the spots around the the cell with coordinatex x and y
     var xmap = [0, 1, 1, 1, 0, -1, -1, -1];
     var ymap = [-1, -1, 0, 1, 1, 1, 0, -1];
 
     var aliveCells = 0;
     for (let i = 0; i < 8; i++) {
-        // console.log(i);
-        if ((x + xmap[i]) < 0 || (y + ymap[i]) < 0 || (x + xmap[i]) == maxHeight || (y + ymap[i]) == maxWidth)
-        {
+        // If out of boundaries
+        if ((x + xmap[i]) < 0 || (y + ymap[i]) < 0 || (x + xmap[i]) == maxHeight || (y + ymap[i]) == maxWidth) {
             continue;
         }
 
-        
         if (matrix[x + xmap[i]][y + ymap[i]]) {
             aliveCells += 1;
         }
     }
+
     // Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-    if (matrix[x][y] && aliveCells < 2)
-    {
+    if (matrix[x][y] && aliveCells < 2) {
         return false;
     }
 
@@ -120,15 +117,25 @@ function update() {
                 cell.style.backgroundColor = "black";
             }
             else {
-                cell.style.backgroundColor = "#E7E7E7";
+                cell.style.backgroundColor = "#B2B2B2";
             }
         }
     }
-    timeoutId = setTimeout(update, 1000);
+
+    if (run) {
+        timeoutId = setTimeout(update, 500 / SPEED);
+    }
+    
 }
 
 function execute() {
-    update();
+    SPEED = document.getElementById("speed-range").value;
+    run = !run;
+    console.log(run);
+    if (run) {
+        start_button.value = "| |";
+        update();
+        return;
+    }
+    start_button.value= ">";
 }
-
-start_button.addEventListener("click", function () {execute();}, false);
