@@ -45,9 +45,7 @@ When the initial state is set the simulation begins with applying the rules in t
 
 ## :camera_flash: Screenshots
 <p align="center">
-<img alt="desc1" width="30%" src="#">
-<img alt="desc2" width="30%" src="#">
-<img alt="desc3" width="30%" src="#">
+<img alt="desc1" width="80%" src="images/screenshot.png">
 </p>
 
 <p align="center">
