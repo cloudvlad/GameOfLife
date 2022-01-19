@@ -1,5 +1,6 @@
 <p align="center">
-  <img style="filter: invert(50%); width: 50%;" src="images/title_logo.png" alt="Game of Life logo">
+  <img style="width: 50%;" src="images/title_logo.png" alt="Game of Life logo">
+  <img style="width: 50%;" src="images/title_logo_i.png" alt="Game of Life logo">
 </p>
 
 ## Web application based on John Conway's Game of life
