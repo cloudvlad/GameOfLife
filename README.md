@@ -54,8 +54,7 @@ When the initial state is set the simulation begins with applying the rules in t
 </p>
 
 ## :old_key: Features
-* #### Initialization of initial state
-* #### Simulation
+* #### Initialization of initial state and simulation
 * #### Speed control
 * #### Pause/Play button
 
